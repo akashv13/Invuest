@@ -1,0 +1,29 @@
+package inuvest;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class Assignment_2_inuvest {
+
+	@Test
+	public void scroll() throws InterruptedException {
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver=new ChromeDriver();
+		driver.get("https://inuvest.tech/");
+		driver.manage().window().maximize();
+		
+		WebElement img=driver.findElement(By.xpath("//img[@src='/assets/images/fyers-logo.jpg']"));
+		
+		JavascriptExecutor js=(JavascriptExecutor) driver;
+		js.executeScript("arguments[0].scrollIntoView(true)",img);
+		
+		WebElement ele=driver.findElement(By.xpath("/html/body/app-root/nb-layout/nb-layout-column/div/div/app-home/div/div[3]/button[3]"));
+		ele.click();
+		driver.close();
+		}}
